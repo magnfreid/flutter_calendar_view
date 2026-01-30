@@ -33,6 +33,8 @@ class HourIndicatorSettings {
       );
 }
 
+enum BulletShape { circular, rectangular }
+
 /// Settings for live time line
 class LiveTimeIndicatorSettings {
   /// Color of time indicator.
@@ -49,6 +51,9 @@ class LiveTimeIndicatorSettings {
 
   /// Flag to show bullet at left side or not.
   final bool showBullet;
+
+  /// Shape of bullet
+  final BulletShape bulletShape;
 
   /// Flag to show time on live time line.
   final bool showTime;
@@ -86,6 +91,7 @@ class LiveTimeIndicatorSettings {
     this.color = Colors.grey,
     this.timeStringBuilder,
     this.showBullet = true,
+    this.bulletShape = BulletShape.circular,
     this.showTime = false,
     this.showTimeBackgroundView = false,
     this.bulletRadius = 5.0,

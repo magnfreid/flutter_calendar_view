@@ -150,6 +150,7 @@ class _LiveTimeIndicatorState extends State<LiveTimeIndicator> {
         ),
         timeString: timeString,
         showBullet: widget.liveTimeIndicatorSettings.showBullet,
+        bulletShape: widget.liveTimeIndicatorSettings.bulletShape,
         showTime: widget.liveTimeIndicatorSettings.showTime,
         showTimeBackgroundView:
             widget.liveTimeIndicatorSettings.showTimeBackgroundView,

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 import 'constants.dart';
 import 'enumerations.dart';
+import 'modals.dart';
 
 /// Paints 24 hour lines.
 class HourLinePainter extends CustomPainter {
@@ -337,6 +338,9 @@ class CurrentTimeLinePainter extends CustomPainter {
   /// Flag to show bullet at left side or not.
   final bool showBullet;
 
+  //Shape of the bullet.
+  final BulletShape bulletShape;
+
   /// Radius of bullet.
   final double bulletRadius;
 
@@ -358,6 +362,7 @@ class CurrentTimeLinePainter extends CustomPainter {
   /// Paints a single horizontal line at [offset].
   CurrentTimeLinePainter({
     required this.showBullet,
+    required this.bulletShape,
     required this.color,
     required this.height,
     required this.offset,
@@ -383,13 +388,35 @@ class CurrentTimeLinePainter extends CustomPainter {
         ..strokeWidth = height,
     );
 
+    // if (showBullet) {
+
+    // }
+
     if (showBullet) {
       final xPoint = isLtr ? offset.dx : offset.dx + size.width;
-      canvas.drawCircle(
-        Offset(xPoint, offset.dy),
-        bulletRadius,
-        Paint()..color = color,
-      );
+
+      switch (bulletShape) {
+        case BulletShape.circular:
+          final xPoint = isLtr ? offset.dx : offset.dx + size.width;
+          canvas.drawCircle(
+            Offset(xPoint, offset.dy),
+            bulletRadius,
+            Paint()..color = color,
+          );
+          break;
+        case BulletShape.rectangular:
+          final rectSize = bulletRadius * 2;
+          final rect = Rect.fromCenter(
+            center: Offset(xPoint, offset.dy),
+            width: rectSize,
+            height: rectSize,
+          );
+          canvas.drawRect(
+            rect,
+            Paint()..color = color,
+          );
+          break;
+      }
     }
 
     if (showTimeBackgroundView) {
