@@ -388,16 +388,11 @@ class CurrentTimeLinePainter extends CustomPainter {
         ..strokeWidth = height,
     );
 
-    // if (showBullet) {
-
-    // }
-
     if (showBullet) {
       final xPoint = isLtr ? offset.dx : offset.dx + size.width;
 
       switch (bulletShape) {
         case BulletShape.circular:
-          final xPoint = isLtr ? offset.dx : offset.dx + size.width;
           canvas.drawCircle(
             Offset(xPoint, offset.dy),
             bulletRadius,
