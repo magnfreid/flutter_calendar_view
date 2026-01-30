@@ -20,6 +20,7 @@ class WeekViewWidget extends StatelessWidget {
       timeLineWidth: 65,
       scrollPhysics: const BouncingScrollPhysics(),
       liveTimeIndicatorSettings: LiveTimeIndicatorSettings(
+        bulletShape: BulletShape.rectangular,
         color: Colors.redAccent,
         showTime: true,
       ),
